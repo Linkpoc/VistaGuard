@@ -2,7 +2,8 @@ import os
 
 from flask import Flask, render_template, url_for, redirect
 from app.home import home
-
+from app.tasks import tasks
+from app.vuls import vuls
 
 app=Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -19,6 +20,8 @@ def internal_server_error(e):
     return render_template('500.html'), 500
 
 app.register_blueprint(home)
+app.register_blueprint(tasks)
+app.register_blueprint(vuls)
 
 
 @app.route('/')
