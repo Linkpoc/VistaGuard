@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>{% block title %}base{% endblock %}</title>
+	{% block css %} {% endblock %}
+	<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='lib/c3js/c3.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='lib/switchery/switchery.min.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='lib/weather-icons/css/weather-icons.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='lib/weather-icons/css/weather-icons.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='lib/calendario/css/calendar.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='lib/offlinejs/themes/offline-theme-dark.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap-override.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/layout.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/library.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+</head>
+<body id="body">
+		<!-- Header -->
+		<header class="navbar main-header">
+		  		<a class="navbar-brand" href="../../../VistaGuard/templates/index.html">
+                    VistaGuard
+                </a>
+               <ul class="nav navbar-nav navbar-left sidebar-toggle-ul">
+                    <li class="navbar-main hidden-lg hidden-md">
+                        <a href="javascript:void(0);" id="sidebar-toggle">
+                            <span class="meta">
+                                <span class="icon"><i class="fa fa-bars"></i></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="navbar-main hidden-sm hidden-xs">
+                        <a href="javascript:void(0);" id="sidebar-collapse">
+                            <span class="meta">
+                                <span class="icon"><i class="fa fa-outdent"></i></span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                 <ul class="nav navbar-nav navbar-right">
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">admin <b class="caret"></b></a>
+			          <ul class="dropdown-menu">
+			            <li><a  data-target="#editPasswd" data-toggle="modal"><i class="fa fa-sun-o"></i> 修改密码</a> </li>
+			            <li><a href="{{url_for('home.logout')}}"><i class="fa fa-share"></i> 退出登录</a></li>
+			          </ul>
+			        </li>
+			     </ul>
+	   </header>
+    <!-- modal -->
+    <div class="modal fade" id="editPasswd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">修改密码</h3>
+					    			<div class="panel-options pull-right">
+                                           <i class="fa fa-chevron-down"></i>
+                                           <i class="fa fa-times"></i>
+                                      </div>
+					  </div>
+					  <div class="panel-body">
+					    <!-- Basic Form -->
+					    <form role="form" action="{{url_for('home.logout')}}" method="post">
+						  <div class="form-group">
+						    <label for="exampleInputEmail1">原密码</label>
+						    <input name="oldpasswd" type="password" class="form-control info" id="exampleInputEmail1" placeholder="输入原密码">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">新密码</label>
+						    <input name="newpasswd" type="password" class="form-control info" id="exampleInputPassword1" placeholder="输入新密码">
+						  </div>
+						  <button type="submit" class="btn btn-info">确定</button>
+						</form>
+					    <!-- Basic form ends -->
+						</div>
+						</div>
+        </div>
+    </div>
+
+        <div class="sidebar sidebar-left">
+        	<div class="content">
+				<div class="tab-content sidetabs">
+				  <div class="tab-pane active" id="home">
+					  	 <ul class="sidemenu">
+						    <li {% block active1 %}{% endblock %}>
+						        <a href="{{url_for('home.index')}}">
+						            <span class="icon"><i class="fa fa-dashboard"></i></span>
+						            <span class="name">仪表盘</span>
+						        </a>
+						    </li>
+							 <li {% block active2 %}{% endblock %}>
+						        <a href="{{url_for('tasks.tasklist')}}">
+						            <span class="icon"><i class="fa fa-bug" ></i></span>
+						            <span class="name">扫描任务</span>
+						        </a>
+						    </li>
+						    <li {% block active3 %}{% endblock %}>
+						        <a href="{{url_for('vuls.vullist')}}">
+						            <span class="icon"><i class="fa fa-bug"></i></span>
+						            <span class="name">漏洞列表</span>
+						        </a>
+						    </li>
+						     <li {% block active4 %}{% endblock %}>
+{#						        <a href="{{url_for('pocs.poclist')}}">#}
+                                 <a href="{{url_for('home.login')}}">
+						            <span class="icon"><i class="fa fa-gavel"></i></span>
+						            <span class="name">POC管理</span>
+						        </a>
+						    </li>
+						    <li {% block active5 %}{% endblock %}>
+{#						        <a href="{{url_for('plugin.pluginlist')}}">#}
+                                <a href="{{url_for('home.login')}}">
+						            <span class="icon"><i class="fa fa fa-puzzle-piece"></i></span>
+						            <span class="name">扩展插件</span>
+						        </a>
+						    </li>
+					</ul>
+				  </div>
+				</div>
+        	</div>
+        </div>
+		<!-- Header -->
+		<section id="main-wrapper" style="min-height:500px">
+			<h3 class="subtitle">{% block subtitle %}副标题{% endblock %}</h3>
+          <hr/>
+
+		{% block content %}{% endblock %}
+		</section>
+{% block javascript %} {% endblock %}
+
+</body>
+</html>
