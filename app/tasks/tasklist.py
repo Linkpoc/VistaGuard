@@ -2,9 +2,12 @@
 from app.tasks import tasks
 from flask import render_template
 
+from app.utils.decorators import login_required
+
 
 @tasks.route('/tasks/')
 @tasks.route('/tasks/<int:page>', methods=['GET'])
+@login_required
 def tasklist(page=1,msg=None):
     # return render_template('tasklist.html')
     # 假设每页显示 10 条数据
