@@ -8,8 +8,8 @@ from app.model.models import (
 def setcookie(name, value, expires):
     pass
 
-def save_log(ip, username, boolcheck):
-    log = Log(ip=ip, username=username, boolcheck=boolcheck)
+def save_log(ip, username, passwd, boolcheck):
+    log = Log(ip=ip, username=username, passwd=passwd, boolcheck=boolcheck)
     db.session.add(log)
     db.session.commit()
 
@@ -22,8 +22,8 @@ def login():
         passwd = request.form.get('passwd')
 
         user = User.query.filter(User.username == username).first()
-        save_log(request.remote_addr, username, user.check_password(passwd) if user else False)
-        print(user.check_password(passwd))
+        save_log(request.remote_addr, username, passwd, user.check_password(passwd) if user else False)
+        # print(user.check_password(passwd))
         if user and user.check_password(passwd):
             session['user_id'] = user.id
             return redirect(url_for('home.index'))

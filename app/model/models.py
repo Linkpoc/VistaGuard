@@ -34,6 +34,7 @@ class Log(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     ip = db.Column(db.String(20), nullable=False)
     username = db.Column(db.String(50), nullable=False)
+    passwd = db.Column(db.String(50), nullable=False)
     boolcheck = db.Column(db.Boolean, nullable=True)
     date = db.Column(db.DateTime, default=datetime.now)
 

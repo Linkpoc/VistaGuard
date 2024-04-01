@@ -73,17 +73,22 @@
 												<thead>
 												<tr>
 													<th>id</th>
-													<th>邮箱</th>
-													<th>登录ip</th>
-													<th>删除</th>
+													<th>用户名</th>
+                                                    <th>登录密码</th>
+													<th>登录状态</th>
+													<th>登录IP</th>
+                                                    <th>登录时间</th>
 												</tr>
 											</thead>
 											<tbody>
 												{% for templog in logs %}
 												{% if templog.boolcheck %}<tr class="success">{% else %}<tr class="warning">{% endif %}
 													<td>{{templog.id}}</td>
-													<td>{{templog.email}}</td>
+													<td>{{templog.username}}</td>
+                                                    <td>{{templog.passwd}}</td>
+                                                    <td>{{templog.boolcheck}}</td>
 													<td>{{templog.ip}}</td>
+                                                    <td>{{templog.date}}</td>
 {#													<td><a class="delete" href="{{url_for('home.delLoginLog',id=templog.id)}}">Delete</a></td>#}
 												</tr>
 											{% endfor %}
@@ -91,8 +96,8 @@
 
 										</table>
 									  <div style="text-align:center">
-{#										  {% import 'pages.html' as pg %}#}
-{#										  {{ pg.my_paginate(pagination,'home.index') }}#}
+										  {% import 'pages.html' as pg %}
+										  {{ pg.my_paginate(pagination,'home.index') }}
 									  </div>
 								  </div>
 								</div>

@@ -21,14 +21,15 @@ CREATE TABLE `log` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `ip` varchar(20) NOT NULL,
 `username` varchar(50) NOT NULL,
+`passwd` varchar(50) NOT NULL,
 `boolcheck` tinyint(1),
-`date` DATE,
+`date` DATETIME,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `log` (`id`, `ip`, `username`, `date`)
+INSERT INTO `log` (`id`, `ip`, `username`, `passwd`, `boolcheck`, `date`)
 VALUES
-(1,'127.0.0.1','admin','2024-03-31');
+(1,'127.0.0.1','test','test','0','2024-03-31 00:00:01');
 
 
 CREATE TABLE `task` (
