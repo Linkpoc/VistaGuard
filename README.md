@@ -12,8 +12,10 @@
 
 ## 登录界面
 ![image](https://github.com/Linkpoc/VistaGuard/assets/79533751/c37b26a2-98c0-4f9d-a698-8db0b24decd0)
+
 ## 仪表盘
-![image](https://github.com/Linkpoc/VistaGuard/assets/79533751/6b764aaf-e9e5-49d8-801d-d6c3f5b9baeb)
+![image](https://github.com/Linkpoc/VistaGuard/assets/79533751/1df5bc05-ab9c-4ae0-a225-0375309dc6cd)
+
 ## 
 
 
