@@ -11,6 +11,7 @@ from app.model.models import (
 from app.model.exts import db
 from app.scan.scanIndex import scanConsole
 from celery.utils.log import get_task_logger
+
 logger = get_task_logger(__name__)
 sys.path.append(os.getcwd())
 '''
